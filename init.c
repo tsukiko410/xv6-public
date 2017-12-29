@@ -32,6 +32,11 @@ main(void)
       exit();
     }
     while((wpid=wait()) >= 0 && wpid != pid)
-      printf(1, "zombie!\n");
+      //printf(1, "%d zombie!\n", wpid);
+    {
+	checkPr();
+	//printf(1, "pid=%d finished\n", wpid);
+	//printf(1, "---------------\n");
+    }
   }
 }

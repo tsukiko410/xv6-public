@@ -20,3 +20,12 @@
 #define SYS_link   19
 #define SYS_mkdir  20
 #define SYS_close  21
+
+/* add define*/
+#define SYS_cps    22
+#define SYS_chpr   23
+#define SYS_date   24
+#define SYS_alarm  25
+#define SYS_setTime 26
+#define SYS_checkTime 27 
+#define SYS_checkPr 28

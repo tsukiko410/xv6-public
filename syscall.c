@@ -104,6 +104,15 @@ extern int sys_wait(void);
 extern int sys_write(void);
 extern int sys_uptime(void);
 
+/* add extern*/
+extern int sys_cps(void);
+extern int sys_chpr(void);
+extern int sys_date(void);
+extern int sys_alarm(void);
+extern int sys_setTime(void);
+extern int sys_checkTime(void);
+extern int sys_checkPr(void);
+
 static int (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -126,6 +135,15 @@ static int (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+
+/* add syscall*/
+[SYS_cps]     sys_cps,
+[SYS_chpr]    sys_chpr,
+[SYS_date]    sys_date,
+[SYS_alarm]   sys_alarm,
+[SYS_setTime] sys_setTime,
+[SYS_checkTime] sys_checkTime,
+[SYS_checkPr] sys_checkPr,
 };
 
 void

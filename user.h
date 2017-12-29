@@ -24,6 +24,15 @@ char* sbrk(int);
 int sleep(int);
 int uptime(void);
 
+/* add syscall*/
+int cps(void);
+int chpr(int pid,int priority);
+int date(struct rtcdate*);
+int alarm(int ticks, void(*hander)());
+int setTime(int pid, int priority, int startHour, int startMin, int endHour, int endMin, int deadlineHour, int deadlineMin);
+int checkTime(int hour, int min);
+int checkPr(void);
+
 // ulib.c
 int stat(char*, struct stat*);
 char* strcpy(char*, char*);

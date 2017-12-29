@@ -120,6 +120,11 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+int             cps(void);
+int             chpr(int pid,int priority);
+int		setTime(int pid, int priority, int startHour, int startMin, int endHour, int endMin, int deadlineHour, int deadlineMin);
+int		checkTime(int hour, int min);
+int		checkPr(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);

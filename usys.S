@@ -29,3 +29,12 @@ SYSCALL(getpid)
 SYSCALL(sbrk)
 SYSCALL(sleep)
 SYSCALL(uptime)
+
+/* add syscall*/
+SYSCALL(cps)
+SYSCALL(chpr)
+SYSCALL(date)
+SYSCALL(alarm)
+SYSCALL(setTime)
+SYSCALL(checkTime)
+SYSCALL(checkPr)

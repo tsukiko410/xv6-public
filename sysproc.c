@@ -89,3 +89,89 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+/* add syscall function*/
+int sys_cps(void)
+{
+    return cps ();
+}
+
+int sys_chpr(void)
+{
+  int pid,pr;
+  if(argint(0,&pid)<0)
+    return -1;
+  if(argint(1,&pr)<0)
+    return -1;
+
+  return chpr (pid,pr);
+}
+
+int sys_date(struct rtcdate *r)
+{
+    if(argptr(0, (void*)&r, sizeof(&r)) < 0)
+	return -1;
+
+    cmostime(r);
+    return 0;
+}
+
+int sys_alarm(void)
+{
+    int ticks;
+    void (*handler)();
+
+    if(argint(0, &ticks) < 0)
+	return -1;
+    
+    if(argptr(1, (char**)&handler, 1) < 0)
+	return -1;
+
+    myproc()->alarmticks = ticks;
+    myproc()->alarmhandler = handler;
+    
+    return 0;
+}
+
+int sys_setTime(void)
+{
+    int pid, priority, startHour, startMin, endHour, endMin, deadlineHour, deadlineMin;
+    if(argint(0, &pid) < 0)
+	return -1;
+    if(argint(1, &priority) < 0)
+	return -1;
+    if(argint(2, &startHour) < 0)
+	return -1;
+    if(argint(3, &startMin) < 0)
+	return -1;
+    if(argint(4, &endHour) < 0)
+	return -1;
+    if(argint(5, &endMin) < 0)
+	return -1;
+    if(argint(6, &deadlineHour) < 0)
+	return -1;
+    if(argint(7, &deadlineMin) < 0)
+	return -1;
+    return setTime(pid, priority, startHour, startMin, endHour, endMin, deadlineHour, deadlineMin);
+    //return 0;
+}
+int sys_checkTime(void)
+{
+    int hour, min;
+    if(argint(0, &hour) < 0)
+	return -1;
+    if(argint(1, &min) < 0)
+	return -1;
+    return checkTime(hour, min);
+}
+
+int sys_checkPr(void)
+{
+  return checkPr ();
+}
+
+
+
+
+
+
+
